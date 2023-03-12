@@ -1,19 +1,21 @@
-recipe_name,category,ingredient_list,directions
-Lemon chicken,Main Course,Chicken breast,Lemon,Black pepper,Salt,Olive oil,Rosemary,Butter,Garlic
-Chocolate Cake,Dessert,Flour,Sugar,Cocoa powder,Baking powder,Salt,Eggs,Vegetable oil,Vanilla extract,Buttermilk
-Spaghetti Bolognese,Main Course,Spaghetti,Pork mince,Onion,Garlic,Celery,Carrots,Tomatoes,Tomato puree,Beef stock,Red wine
-Chicken Parmesan,Main Course,Chicken breasts,All-purpose flour,Eggs,Panko bread crumbs,Italian seasoning,Paprika,Salt,Black pepper,Olive oil,Marinara sauce,Shredded mozzarella cheese,Grated Parmesan cheese
-Mac and Cheese,Main Course,Elbow macaroni,Butter,Flour,Salt,Milk,Shredded cheddar cheese,Shredded Parmesan cheese,Bread crumbs
-Beef and Broccoli Stir Fry,Main Course,Beef sirloin,Broccoli,Cornstarch,Soy sauce,Oyster sauce,Beef broth,Honey,Ginger,Sesame oil,Green onions,Rice
-Caesar Salad,Salad,Romaine lettuce,Croutons,Parmesan cheese,Caesar dressing
-Chicken Alfredo,Main Course,Penne pasta,Chicken breasts,Butter,Heavy cream,Garlic,Parmesan cheese,Parsley
-Tuna Salad,Sandwich,Tuna,Mayonnaise,Celery,Red onion,Relish,Dill pickle,Black pepper,Bread
-Beef Stew,Main Course,Beef chuck,Salt,Black pepper,Olive oil,Onions,Carrots,Celery,Garlic,All-purpose flour,Tomato paste,Red wine,Beef broth,Potatoes,Rosemary,Thyme,Bay leaves
-Fish and Chips,Main Course,White fish fillets,All-purpose flour,Cornstarch,Beer,Paprika,Black pepper,Salt,Potatoes,Vegetable oil,Tartar sauce
-Vegetable Soup,Soup,Carrots,Celery,Onion,Garlic,Cabbage,Potatoes,Green beans,Canned diced tomatoes,Vegetable broth,Olive oil,Salt,Black pepper
-Potato Salad,Side Dish,Potatoes,Mayonnaise,Dijon mustard,Vinegar,Celery,Red onion,Hard-boiled eggs,Dill pickle relish,Salt,Black pepper
-Fajitas,Main Course,Flank steak,Green bell pepper,Red bell pepper,Yellow onion,Taco seasoning mix,Tortillas,Sour cream,Salsa,Shredded cheese,Lime wedges
-Garlic Shrimp,Main Course,Shrimp,Olive oil,Garlic,Red pepper flakes,White wine,Butter,Lemon juice,Parsley,Salt,Black pepper,Bread
-Chicken Noodle Soup,Soup,Chicken breasts,Butter,Carrots,Celery,Onion,Garlic,Chicken broth,Egg noodles,Parsley,Salt,Black pepper
-Fried Rice,Main Course,Cooked rice,Peas,Carrots,Egg,Soy sauce,Oyster sauce,Green onions,Salt,Black pepper
-Chili Con Carne,Main Course,Ground beef,Onion,Green bell pepper,Red bell pepper,Garlic,Tomatoes,Tomato paste,Beef broth,Chili powder,Cumin,Paprika,Salt,Black pepper,Red pepper flakes,Red kidney beans
+id,name,category,ingredients
+1,Chicken Alfredo,Pasta,"Chicken, Alfredo sauce, Pasta, Salt, Pepper"
+2,Beef Stroganoff,Main Course,"Beef, Sour cream, Onion, Garlic, Mushrooms, Salt, Pepper"
+3,Grilled Cheese,Sandwich,"Bread, Butter, Cheese"
+4,Chocolate Cake,Dessert,"Flour, Sugar, Eggs, Milk, Chocolate, Baking powder, Salt"
+5,Tomato Soup,Soup,"Tomatoes, Onion, Garlic, Chicken broth, Salt, Pepper"
+6,Spaghetti Bolognese,Pasta,"Ground beef, Tomato sauce, Spaghetti, Onion, Garlic, Salt, Pepper"
+7,Chicken Caesar Salad,Salad,"Chicken, Romaine lettuce, Caesar dressing, Croutons, Parmesan cheese"
+8,Pumpkin Pie,Dessert,"Pumpkin puree, Sweetened condensed milk, Eggs, Cinnamon, Nutmeg, Ginger, Salt, Pie crust"
+9,Tuna Salad,Sandwich,"Tuna, Mayonnaise, Celery, Onion, Salt, Pepper"
+10,Steak,Main Course,"Steak, Salt, Pepper, Butter"
+11,Mac and Cheese,Side Dish,"Macaroni, Cheese sauce, Milk, Butter"
+12,Shrimp Scampi,Seafood,"Shrimp, Linguine, Butter, Garlic, Lemon juice, Parsley, Salt, Pepper"
+13,Chicken Fajitas,Mexican,"Chicken, Bell peppers, Onion, Tortillas, Cumin, Chili powder, Salt, Pepper"
+14,Clam Chowder,Soup,"Clams, Potatoes, Onion, Celery, Bacon, Flour, Milk, Butter, Salt, Pepper"
+15,Pesto Pasta Salad,Pasta,"Pasta, Pesto sauce, Cherry tomatoes, Mozzarella cheese, Pine nuts"
+16,Chicken Noodle Soup,Soup,"Chicken, Noodles, Carrots, Celery, Onion, Chicken broth, Salt, Pepper"
+17,Beef Tacos,Mexican,"Ground beef, Tortillas, Shredded cheese, Lettuce, Tomato, Onion, Cumin, Chili powder, Salt, Pepper"
+18,Spinach and Artichoke Dip,Appetizer,"Spinach, Artichoke hearts, Cream cheese, Sour cream, Mayonnaise, Garlic, Parmesan cheese, Salt, Pepper"
+19,Chicken Parmesan,Italian,"Chicken breast, Bread crumbs, Parmesan cheese, Tomato sauce, Mozzarella cheese, Spaghetti, Salt, Pepper"
+20,Beef and Broccoli Stir Fry,Asian,"Beef, Broccoli, Soy sauce, Garlic, Ginger, Cornstarch, Rice"
