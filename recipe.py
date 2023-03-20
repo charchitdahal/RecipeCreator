@@ -66,7 +66,6 @@ class RecipeDB(db.DBbase):
                     print("Save to DB aborted")
 
 
-# Usage example
 recipe_db = RecipeDB("RecipeDB.sqlite")
 recipe_db.reset_or_create_db()
 recipe_db.read_recipe_data("recipes.csv")
