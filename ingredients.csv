@@ -1,0 +1,133 @@
+id,recepie_id,ingredient_name,quantity
+1, 1, Chicken, 2lb
+2, 1, Alfredo sauce, 3 tsp  
+3, 1, Pasta, 5 oz
+4, 1, Salt, 2 tsp
+5, 1, Pepper, 2 tsp
+6, 2, Beef, 2lb
+7, 2, Sour cream, 5 tsp
+8, 2, Onion, 2
+9, 2, Garlic, 2 cloves
+10, 2, Mushrooms, 2lb
+11, 2, Salt, 2 tsp
+12, 2, Pepper, 2lb
+13, 3, Bread, 2 slices
+14, 3, Butter, 2 tbsp
+15, 3, Cheese, 2 slices
+16, 4, Flour, 2 cups
+17, 4, Sugar, 2 cups
+18, 4, Eggs, 4
+19, 4, Milk, 2 cups
+20, 4, Chocolate, 6 oz
+21, 4, Baking powder, 2 tsp
+22, 4, Salt, 1/2 tsp
+23, 5, Tomatoes, 6
+24, 5, Onion, 1
+25, 5, Garlic, 2 cloves
+26, 5, Chicken broth, 4 cups
+27, 5, Salt, 1 tsp
+28, 5, Pepper, 1/2 tsp
+29, 6, Ground beef, 1 lb
+30, 6, Tomato sauce, 24 oz
+31, 6, Spaghetti, 1 lb
+32, 6, Onion, 1
+33, 6, Garlic, 2 cloves
+34, 6, Salt, 1 tsp
+35, 6, Pepper, 1/2 tsp
+36, 7, Chicken, 2 breasts
+37, 7, Romaine lettuce, 1 head
+38, 7, Caesar dressing, 1/4 cup
+39, 7, Croutons, 1/2 cup
+40, 7, Parmesan cheese, 1/4 cup
+41, 8, Pumpkin puree, 1 can
+42, 8, Sweetened condensed milk, 1 can
+43, 8, Eggs, 2
+44, 8, Cinnamon, 1 tsp
+45, 8, Nutmeg, 1/2 tsp
+46, 8, Ginger, 1/4 tsp
+47, 8, Salt, 1/2 tsp
+48, 8, Pie crust, 1
+49, 9, Tuna, 1 can
+50, 9, Mayonnaise, 1/4 cup
+51, 9, Celery, 1/4 cup
+52, 9, Onion, 1/4 cup
+53, 9, Salt, 1/4 tsp
+54, 9, Pepper, 1/4 tsp
+55, 10, Steak, 1
+56, 10, Salt, 1 tsp
+57, 10, Pepper, 1/2 tsp
+58, 10, Butter, 2 tbsp
+59, 11, Macaroni, 8 oz
+60, 11, Cheese sauce, 1 cup
+61, 11, Milk, 1/4 cup
+62, 11, Butter, 2 tbsp
+63, 12, Shrimp, 1 lb
+64, 12, Linguine, 1/2 lb
+65, 12, Butter, 4 tbsp
+66, 12, Garlic, 4 cloves
+67, 12, Lemon juice, 1
+68, 13, Chicken, 1 lb
+69, 13, Bell peppers, 3
+70, 13, Onion, 1
+71, 13, Tortillas, 8
+72, 13, Cumin, 1 tsp
+73, 13, Chili powder, 1 tsp
+74, 13, Salt, 1/2 tsp
+75, 13, Pepper, 1/2 tsp
+76, 14, Clams, 2 lbs
+77, 14, Potatoes, 3
+78, 14, Onion, 1
+79, 14, Celery, 2 stalks
+80, 14, Bacon, 4 slices
+81, 14, Flour, 2 tbsp
+82, 14, Milk, 2 cups
+83, 14, Butter, 2 tbsp
+84, 14, Salt, 1 tsp
+85, 14, Pepper, 1/2 tsp
+86, 15, Pasta, 1 lb
+87, 15, Pesto sauce, 1/2 cup
+88, 15, Cherry tomatoes, 1 cup
+89, 15, Mozzarella cheese, 1 cup
+90, 15, Pine nuts, 1/4 cup
+91, 16, Chicken, 1 lb
+92, 16, Noodles, 4 oz
+93, 16, Carrots, 2
+94, 16, Celery, 2 stalks
+95, 16, Onion, 1
+96, 16, Chicken broth, 6 cups
+97, 16, Salt, 1 tsp
+98, 16, Pepper, 1/2 tsp
+99, 17, Ground beef, 2lb
+100, 17, Tortillas, 2 packs
+101, 17, Shredded cheese, 1 cup
+102, 17, Lettuce, 1 head
+103, 17, Tomato, 2
+104, 17, Onion, 1
+105, 17, Cumin, 2 tbsp
+106, 17, Chili powder, 2 tbsp
+107, 17, Salt, 2 tsp
+108, 17, Pepper, 1 tsp
+109, 18, Spinach, 2 cups
+110, 18, Artichoke hearts, 1 can
+111, 18, Cream cheese, 8 oz
+112, 18, Sour cream, 1 cup
+113, 18, Mayonnaise, 1/2 cup
+114, 18, Garlic, 2 cloves
+115, 18, Parmesan cheese, 1/2 cup
+116, 18, Salt, 1 tsp
+117, 18, Pepper, 1/4 tsp
+118, 19, Chicken breast, 4
+119, 19, Bread crumbs, 1 cup
+120, 19, Parmesan cheese, 1/2 cup
+121, 19, Tomato sauce, 24 oz
+122, 19, Mozzarella cheese, 2 cups
+123, 19, Spaghetti, 1 lb
+124, 19, Salt, 1 tsp
+125, 19, Pepper, 1/4 tsp
+126, 20, Beef, 1 lb
+127, 20, Broccoli, 1 lb
+128, 20, Soy sauce, 1/4 cup
+129, 20, Garlic, 2 cloves
+130, 20, Ginger, 1 tsp
+131, 20, Cornstarch, 1 tbsp
+132, 20, Rice, 2 cups
