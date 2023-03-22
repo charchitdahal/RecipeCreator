@@ -1,12 +1,14 @@
 import db_base as db
 import csv
 
+
 class Ingredients:
     def __init__(self, row):
         self.id = row[0]
         self.recipe_id = row[1]
         self.ingredient_name = row[2]
         self.quantity = row[3]
+
 
 class IngredientsDB(db.DBbase):
 
@@ -114,7 +116,8 @@ class IngredientsDB(db.DBbase):
 
             # Update the record in the database
             sql = "UPDATE Ingredients SET recipe_id=?, ingredient_name=?, quantity=? WHERE id=?"
-            params = (new_recipe_id or current_record[1], new_ingredient_name or current_record[2], new_quantity or current_record[3], id)
+            params = (new_recipe_id or current_record[1], new_ingredient_name or current_record[2],
+                      new_quantity or current_record[3], id)
             super().get_cursor.execute(sql, params)
             super().get_connection.commit()
 
@@ -132,17 +135,14 @@ class IngredientsDB(db.DBbase):
         except Exception as e:
             print(e)
             print(f"Failed to delete record with id {id}.")
-    
-
 
 # Usage example
-ingredients_db = IngredientsDB("IngredientsDB.sqlite")
-ingredients_db.reset_or_create_db()
-ingredients_db.read_ingredients_data("ingredients.csv")
-ingredients_db.save_to_db()
+# ingredients_db = IngredientsDB("RecipeDB.sqlite")
+# ingredients_db.reset_or_create_db()
+# ingredients_db.read_ingredients_data("ingredients.csv")
+# ingredients_db.save_to_db()
 # ingredients_db.insert_single_record()
 # ingredients_db.update_record(1)
 # ingredient = ingredients_db.get_by_id(5)
 # print(ingredient.id, ingredient.recipe_id, ingredient.ingredient_name, ingredient.quantity)
 # ingredients_db.delete_by_id(133)
-
