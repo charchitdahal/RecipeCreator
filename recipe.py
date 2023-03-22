@@ -1,12 +1,13 @@
 import db_base as db
 import csv
 
+
 class Recipe:
     def __init__(self, row):
         self.id = row[0]
         self.name = row[1]
         self.category = row[2]
-        self.ingredients = row[3]
+
 
 class RecipeDB(db.DBbase):
     def reset_or_create_db(self):
@@ -16,8 +17,7 @@ class RecipeDB(db.DBbase):
         CREATE TABLE Recipe (
             id INTEGER NOT NULL PRIMARY KEY UNIQUE,
             name TEXT,
-            category varchar(20) NOT NULL,
-            ingredients TEXT
+            category varchar(20) NOT NULL
         );
         """
 
@@ -48,15 +48,14 @@ class RecipeDB(db.DBbase):
                 try:
                     super().get_cursor.execute("""
                     
-                    INSERT INTO Recipe (
+                    INSERT OR IGNORE INTO Recipe (
                         id,
                         name ,
-                        category ,
-                        ingredients 
+                        category
                     )
-                    VALUES(?,?,?,?)
+                    VALUES(?,?,?)
                     
-                    """, (item.id, item.name, item.category, item.ingredients))
+                    """, (item.id, item.name, item.category))
 
                     super().get_connection.commit()
                     print("Saved to DB:", item.id, item.name)
@@ -65,8 +64,35 @@ class RecipeDB(db.DBbase):
                     print(e)
                     print("Save to DB aborted")
 
+    def add_recipe(self, id, name, category):
+        try:
+            super().get_cursor.execute("""
 
-recipe_db = RecipeDB("RecipeDB.sqlite")
-recipe_db.reset_or_create_db()
-recipe_db.read_recipe_data("recipes.csv")
-recipe_db.save_to_db()
+            INSERT OR IGNORE INTO Recipe (
+                id,
+                name ,
+                category  
+            )
+            VALUES(?,?,?)
+
+            """, (id, name, category))
+            super().get_connection.commit()
+            print(f"Added {name} successfully.")
+        except Exception as e:
+            print("An error has occurred.", e)
+
+    def delete_recipe(self, id):
+        try:
+            super().get_cursor.execute("DELETE FROM Recipe WHERE id=?", (id,))
+            super().get_connection.commit()
+            print(f"Record with id {id} deleted successfully.")
+        except Exception as e:
+            print(e)
+            print(f"Failed to delete record with id {id}.")
+
+# recipe_db = RecipeDB("RecipeDB.sqlite")
+# recipe_db.reset_or_create_db()
+# recipe_db.read_recipe_data("recipes.csv")
+# recipe_db.save_to_db()
+# recipe_db.add_recipe(21, 'Butter Chicken', 'Indian')
+# recipe_db.delete_recipe(21)

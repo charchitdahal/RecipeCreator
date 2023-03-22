@@ -24,7 +24,7 @@ class UserDB(db.DBbase):
 
     def read_user_data(self):
         self.user_list = [
-            [1, "admin_user", "manager"],
+            [1, "admin_user", "admin"],
             [2, "user_1", "user"]
         ]
 
@@ -34,7 +34,7 @@ class UserDB(db.DBbase):
             try:
                 super().get_cursor.execute("""
 
-                INSERT INTO Users (
+                INSERT OR IGNORE INTO Users (
                     userid,
                     user_name,
                     role
@@ -50,8 +50,36 @@ class UserDB(db.DBbase):
                 print(e)
                 print("Save to DB aborted")
 
+    def add_user(self, userid, user_name, role):
+        try:
+            super().get_cursor.execute("""
 
-user_db = UserDB("RecipeDB.sqlite")
-user_db.reset_or_create_db()
-user_db.read_user_data()
-user_db.save_to_db()
+                INSERT OR IGNORE INTO Users (
+                    userid,
+                    user_name,
+                    role
+                )
+                VALUES(?,?,?)
+
+                """, (userid, user_name, role))
+
+            super().get_connection.commit()
+            print(f"Added {user_name} successfully.")
+        except Exception as e:
+            print("An error has occurred.", e)
+
+    def delete_user(self, userid):
+        try:
+            super().get_cursor.execute("DELETE FROM Users WHERE userid=?", (userid,))
+            super().get_connection.commit()
+            print(f"Record with userid {userid} deleted successfully.")
+        except Exception as e:
+            print(e)
+            print(f"Failed to delete record with id {userid}.")
+
+# user_db = UserDB("RecipeDB.sqlite")
+# user_db.reset_or_create_db()
+# user_db.read_user_data()
+# user_db.save_to_db()
+# user_db.add_user(3, 'user_2', 'user')
+# user_db.delete_user(3)
