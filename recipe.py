@@ -82,17 +82,37 @@ class RecipeDB(db.DBbase):
             print("An error has occurred.", e)
 
     def delete_recipe(self, id):
+        # delete from Recipe table
         try:
             super().get_cursor.execute("DELETE FROM Recipe WHERE id=?", (id,))
             super().get_connection.commit()
-            print(f"Record with id {id} deleted successfully.")
+            print(f"Recipe with id {id} deleted successfully.")
         except Exception as e:
             print(e)
-            print(f"Failed to delete record with id {id}.")
+            print(f"Failed to delete recipe with id {id}.")
 
-# recipe_db = RecipeDB("RecipeDB.sqlite")
-# recipe_db.reset_or_create_db()
-# recipe_db.read_recipe_data("recipes.csv")
-# recipe_db.save_to_db()
+        # delete from Ingredients table
+        try:
+            super().get_cursor.execute("DELETE FROM Ingredients WHERE recipe_id=?", (id,))
+            super().get_connection.commit()
+            print(f"Ingredients for Recipe id {id} deleted successfully.")
+        except Exception as e:
+            print(e)
+            print(f"Failed to delete Ingredients for recipe with id {id}.")
+
+
+    def fetch_recipe(self, id=None):
+        try:
+            if id is not None:
+                return super().get_cursor.execute("SELECT * FROM Recipe WHERE id = ?", (id,)).fetchone()
+            else:
+                return super().get_cursor.execute("SELECT * FROM Recipe").fetchall()
+        except Exception as e:
+            print("An error has occurred.", e)
+
+#recipe_db = RecipeDB("RecipeDB.sqlite")
+#recipe_db.reset_or_create_db()
+#recipe_db.read_recipe_data("recipes.csv")
+#recipe_db.save_to_db()
 # recipe_db.add_recipe(21, 'Butter Chicken', 'Indian')
 # recipe_db.delete_recipe(21)
