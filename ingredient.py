@@ -1,4 +1,4 @@
-import db_base as db
+import recipe
 import csv
 
 
@@ -10,7 +10,7 @@ class Ingredients:
         self.quantity = row[3]
 
 
-class IngredientsDB(db.DBbase):
+class IngredientsDB(recipe.RecipeDB):
 
     # Reset or create database
     def reset_or_create_db(self):
@@ -100,6 +100,16 @@ class IngredientsDB(db.DBbase):
             print(e)
             print(f"Failed to get record with id {id}.")
 
+    def get_by_recipe_id(self, recipe_id):
+        try:
+            if id is not None:
+                return super().get_cursor.execute("SELECT * FROM Ingredients WHERE recipe_id = ?", (recipe_id,)).fetchall()
+            else:
+                return super().get_cursor.execute("SELECT * FROM Ingredients").fetchall()
+        except Exception as e:
+            print("An error has occurred.", e)
+
+
     def update_record(self, id):
         try:
             # Get the current record from the database
@@ -137,6 +147,7 @@ class IngredientsDB(db.DBbase):
             print(f"Failed to delete record with id {id}.")
 
 # Usage example
+
 # ingredients_db = IngredientsDB("RecipeDB.sqlite")
 # ingredients_db.reset_or_create_db()
 # ingredients_db.read_ingredients_data("ingredients.csv")
@@ -146,3 +157,4 @@ class IngredientsDB(db.DBbase):
 # ingredient = ingredients_db.get_by_id(5)
 # print(ingredient.id, ingredient.recipe_id, ingredient.ingredient_name, ingredient.quantity)
 # ingredients_db.delete_by_id(133)
+# results= ingredients_db.get_by_recipe_id(5)

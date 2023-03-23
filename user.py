@@ -1,4 +1,5 @@
 import db_base as db
+import recipe
 
 
 class User:
@@ -8,7 +9,7 @@ class User:
         self.role = row[2]
 
 
-class UserDB(db.DBbase):
+class UserDB(recipe.RecipeDB):
     def reset_or_create_db(self):
         sql = """
         DROP TABLE IF EXISTS Users;
@@ -77,9 +78,38 @@ class UserDB(db.DBbase):
             print(e)
             print(f"Failed to delete record with id {userid}.")
 
-# user_db = UserDB("RecipeDB.sqlite")
+
+    def get_user_role_by_name(self, user_name):
+        try:
+            super().get_cursor.execute("SELECT role FROM Users WHERE user_name=?", (user_name,))
+            role = super().get_cursor.fetchone()[0]
+            if role !="":
+                return role
+            else:
+                print(f"No record found with user_name {user_name}.")
+        except Exception as e:
+            print(e)
+            print(f"Failed to get record with user_name {user_name}.")
+
+
+    def get_user_name_by_name(self, user_name):
+        try:
+            super().get_cursor.execute("SELECT user_name FROM Users WHERE user_name=?", (user_name,))
+            user_name = super().get_cursor.fetchone()[0]
+            if user_name !="":
+                return user_name
+            else:
+                print(f"No record found with user_name {user_name}.")
+        except Exception as e:
+            print(e)
+            print(f"Failed to get record with user_name {user_name}.")
+            return ''
+
+user_db = UserDB("RecipeDB.sqlite")
 # user_db.reset_or_create_db()
 # user_db.read_user_data()
 # user_db.save_to_db()
 # user_db.add_user(3, 'user_2', 'user')
 # user_db.delete_user(3)
+# user_db.get_user_role_by_name('user_1')
+user_db.get_user_name_by_name('user_2')
