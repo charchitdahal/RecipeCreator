@@ -1,7 +1,7 @@
 import db_base as db
-import recipe
 
 
+# class to break down a row into individual elements/columns
 class User:
     def __init__(self, row):
         self.userid = row[0]
@@ -9,7 +9,10 @@ class User:
         self.role = row[2]
 
 
-class UserDB(recipe.RecipeDB):
+# class with functions for CRUD implementation for user table
+class UserDB(db.DBbase):
+
+    # function to drop and re-create user table
     def reset_or_create_db(self):
         sql = """
         DROP TABLE IF EXISTS Users;
@@ -23,12 +26,14 @@ class UserDB(recipe.RecipeDB):
 
         super().execute_script(sql)
 
+    # function to declare a list with user data
     def read_user_data(self):
         self.user_list = [
             [1, "admin_user", "admin"],
             [2, "user_1", "user"]
         ]
 
+    # function to write user data from a list into User table
     def save_to_db(self):
         for row in self.user_list:
             user = User(row)
@@ -51,6 +56,7 @@ class UserDB(recipe.RecipeDB):
                 print(e)
                 print("Save to DB aborted")
 
+    # function to add a user to User table via interactive menu
     def add_user(self, userid, user_name, role):
         try:
             super().get_cursor.execute("""
@@ -69,6 +75,7 @@ class UserDB(recipe.RecipeDB):
         except Exception as e:
             print("An error has occurred.", e)
 
+    # function to delete a user from User table via interactive menu
     def delete_user(self, userid):
         try:
             super().get_cursor.execute("DELETE FROM Users WHERE userid=?", (userid,))
@@ -78,12 +85,12 @@ class UserDB(recipe.RecipeDB):
             print(e)
             print(f"Failed to delete record with id {userid}.")
 
-
+    # function to retrieve a user's role if the user name is provided
     def get_user_role_by_name(self, user_name):
         try:
             super().get_cursor.execute("SELECT role FROM Users WHERE user_name=?", (user_name,))
             role = super().get_cursor.fetchone()[0]
-            if role !="":
+            if role != "":
                 return role
             else:
                 print(f"No record found with user_name {user_name}.")
@@ -91,12 +98,12 @@ class UserDB(recipe.RecipeDB):
             print(e)
             print(f"Failed to get record with user_name {user_name}.")
 
-
+    # function to check user exists in database if the user name is provided
     def get_user_name_by_name(self, user_name):
         try:
             super().get_cursor.execute("SELECT user_name FROM Users WHERE user_name=?", (user_name,))
             user_name = super().get_cursor.fetchone()[0]
-            if user_name !="":
+            if user_name != "":
                 return user_name
             else:
                 print(f"No record found with user_name {user_name}.")
@@ -105,11 +112,10 @@ class UserDB(recipe.RecipeDB):
             print(f"Failed to get record with user_name {user_name}.")
             return ''
 
-user_db = UserDB("RecipeDB.sqlite")
+
+# initial class and function calls
+# user_db = UserDB("RecipeDB.sqlite")
 # user_db.reset_or_create_db()
 # user_db.read_user_data()
 # user_db.save_to_db()
-# user_db.add_user(3, 'user_2', 'user')
-# user_db.delete_user(3)
-# user_db.get_user_role_by_name('user_1')
-user_db.get_user_name_by_name('user_2')
+
