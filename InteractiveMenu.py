@@ -10,20 +10,23 @@ class InteractiveMenu:
 
         print("Welcome to RECIPE CREATOR AND MANAGER")
 
+        # authenticate a user via user name a password
         user_db = user.UserDB("RecipeDB.sqlite")
-
         trial = ''
         while trial != 'n':
             user_name = input("Enter User Name: ")
             user_password = input("Enter Password")
             trial = 'n'
-            if user_db.get_user_name_by_name(user_name) == '' or user_password != user_name + '123':
+            if user_db.get_user_name_by_name(user_name) == '' or user_password != user_name + 'pass':
                 trial = input("Incorrect username and password. Try again? (y/n)")
 
-        if (user_db.get_user_name_by_name(user_name) != '') and (user_password == user_name + '123'):
+        # if the user is authentic..
+        if (user_db.get_user_name_by_name(user_name) != '') and (user_password == user_name + 'pass'):
 
+            # retrieve user's role
             user_role = user_db.get_user_role_by_name(user_name)
 
+            # show options to the user based on his role
             if user_role == 'user':
                 recipe_options = {
                     "1": "Display all available dishes on the menu",
@@ -179,5 +182,7 @@ class InteractiveMenu:
                     input("Press return to continue")
 
 
+# create an object of InteractiveMenu class
 menu = InteractiveMenu()
+# run the run() method to trigger the RECIPE CREATOR AND MANAGER program
 menu.run()

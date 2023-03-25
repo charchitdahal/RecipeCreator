@@ -2,6 +2,7 @@ import db_base as db
 import csv
 
 
+# class to break down a row into individual elements/columns
 class Recipe:
     def __init__(self, row):
         self.id = row[0]
@@ -9,7 +10,10 @@ class Recipe:
         self.category = row[2]
 
 
+# class with functions for CRUD implementation for recipe table
 class RecipeDB(db.DBbase):
+
+    # function to drop and re-create recipe table
     def reset_or_create_db(self):
         sql = """
         DROP TABLE IF EXISTS Recipe;
@@ -27,6 +31,7 @@ class RecipeDB(db.DBbase):
         except Exception as e:
             print(e)
 
+    # function to read recipe data from csv and add to a list
     def read_recipe_data(self, file_name):
         self.recipe_list = []
 
@@ -40,6 +45,7 @@ class RecipeDB(db.DBbase):
         except Exception as e:
             print(e)
 
+    # function to write recipe data from list into Recipe table
     def save_to_db(self):
         print("Number of recipes saved:", len(self.recipe_list))
         save = input("Do you want to save the recipes to the database? (y/n)").lower()
@@ -64,6 +70,7 @@ class RecipeDB(db.DBbase):
                     print(e)
                     print("Save to DB aborted")
 
+    # function to add recipe to Recipe table via interactive menu
     def add_recipe(self, id, name, category):
         try:
             super().get_cursor.execute("""
@@ -81,6 +88,7 @@ class RecipeDB(db.DBbase):
         except Exception as e:
             print("An error has occurred.", e)
 
+    # function to delete recipe from Recipe as well as Ingredients table via interactive menu
     def delete_recipe(self, id):
         # delete from Recipe table
         try:
@@ -100,7 +108,9 @@ class RecipeDB(db.DBbase):
             print(e)
             print(f"Failed to delete Ingredients for recipe with id {id}.")
 
-
+    # function to retrieve recipe data from Recipe and display on console
+    # if recipe id is provided, it retrieves data only for one recipe
+    # if recipe id is not provided, it retrieves data only for all the recipes in the table
     def fetch_recipe(self, id=None):
         try:
             if id is not None:
@@ -110,9 +120,8 @@ class RecipeDB(db.DBbase):
         except Exception as e:
             print("An error has occurred.", e)
 
-#recipe_db = RecipeDB("RecipeDB.sqlite")
-#recipe_db.reset_or_create_db()
-#recipe_db.read_recipe_data("recipes.csv")
-#recipe_db.save_to_db()
-# recipe_db.add_recipe(21, 'Butter Chicken', 'Indian')
-# recipe_db.delete_recipe(21)
+# initial class and function calls
+# recipe_db = RecipeDB("RecipeDB.sqlite")
+# recipe_db.reset_or_create_db()
+# recipe_db.read_recipe_data("recipes.csv")
+# recipe_db.save_to_db()

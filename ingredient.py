@@ -2,6 +2,7 @@ import recipe
 import csv
 
 
+# class to break down a row into individual elements/columns
 class Ingredients:
     def __init__(self, row):
         self.id = row[0]
@@ -10,9 +11,10 @@ class Ingredients:
         self.quantity = row[3]
 
 
+# class with functions for CRUD implementation for ingredients table
 class IngredientsDB(recipe.RecipeDB):
 
-    # Reset or create database
+    # function to drop and re-create ingredients table
     def reset_or_create_db(self):
         sql = """
         DROP TABLE IF EXISTS Ingredients;
@@ -32,6 +34,7 @@ class IngredientsDB(recipe.RecipeDB):
         except Exception as e:
             print(e)
 
+    # function to read ingredients data from csv and add to a list
     def read_ingredients_data(self, file_name):
         self.ingredient_list = []
 
@@ -45,7 +48,7 @@ class IngredientsDB(recipe.RecipeDB):
         except Exception as e:
             print(e)
 
-    # save csv data to db
+    # function to write ingredients data from list into Ingredients table
     def save_to_db(self):
         print("Number of ingredients saved:", len(self.ingredient_list))
         save = input("Do you want to save the ingredients to the database? (y/n)").lower()
@@ -71,7 +74,7 @@ class IngredientsDB(recipe.RecipeDB):
                     print(e)
                     print("Save to DB aborted")
 
-    # Inserts single record
+    # Function to insert a single record into Ingredients table
     def insert_single_record(self):
         print("Insert a new ingredient record:\n")
         recipe_id = input("Recipe ID: ")
@@ -88,6 +91,7 @@ class IngredientsDB(recipe.RecipeDB):
             print(e)
             print("Failed to insert record.")
 
+    # Function to retrieve a single record from Ingredients table
     def get_by_id(self, id):
         try:
             super().get_cursor.execute("SELECT * FROM Ingredients WHERE id=?", (id,))
@@ -100,16 +104,18 @@ class IngredientsDB(recipe.RecipeDB):
             print(e)
             print(f"Failed to get record with id {id}.")
 
+    # Function to retrieve a multiple records from Ingredients table corresponding to a recipe id
     def get_by_recipe_id(self, recipe_id):
         try:
             if id is not None:
-                return super().get_cursor.execute("SELECT * FROM Ingredients WHERE recipe_id = ?", (recipe_id,)).fetchall()
+                return super().get_cursor.execute("SELECT * FROM Ingredients WHERE recipe_id = ?",
+                                                  (recipe_id,)).fetchall()
             else:
                 return super().get_cursor.execute("SELECT * FROM Ingredients").fetchall()
         except Exception as e:
             print("An error has occurred.", e)
 
-
+    # Function to retrieve a update a single record into the Ingredients table
     def update_record(self, id):
         try:
             # Get the current record from the database
@@ -136,7 +142,7 @@ class IngredientsDB(recipe.RecipeDB):
             print(e)
             print(f"Failed to update record with id {id}.")
 
-    # Delete single record
+    # Function to delete a single record from Ingredients table
     def delete_by_id(self, id):
         try:
             super().get_cursor.execute("DELETE FROM Ingredients WHERE id=?", (id,))
@@ -146,15 +152,8 @@ class IngredientsDB(recipe.RecipeDB):
             print(e)
             print(f"Failed to delete record with id {id}.")
 
-# Usage example
-
+# initial class and function calls
 # ingredients_db = IngredientsDB("RecipeDB.sqlite")
 # ingredients_db.reset_or_create_db()
 # ingredients_db.read_ingredients_data("ingredients.csv")
 # ingredients_db.save_to_db()
-# ingredients_db.insert_single_record()
-# ingredients_db.update_record(1)
-# ingredient = ingredients_db.get_by_id(5)
-# print(ingredient.id, ingredient.recipe_id, ingredient.ingredient_name, ingredient.quantity)
-# ingredients_db.delete_by_id(133)
-# results= ingredients_db.get_by_recipe_id(5)
